@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ClkCam.Models.Service>
+
+@using Dekom.Helper;
+
+
+@{
+    ViewBag.Title = "HİZMETLERİMİZ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container p-0">
+
+
+    <ul id="portfolioGrid" class="portfolioInfiniteScrollWrapper portfolioInfiniteScroll-list p-0" data-grid-sizer=".col-md-6" data-total-pages="5">
+
+        @foreach (var service in Model)
+        {
+            <li class="col-md-6 isotope-item p-0">
+                <div class="portfolio-grid-item">
+                    <a href="/Hizmetler/@SeoHelper.ToSeoUrl(service.Title).ToLower()-@service.ServiceId" class="text-decoration-none popup-with-move-anim">
+                        <div class="thumb-info">
+                            <div class="thumb-info-wrapper size-4 m-0">
+                                <span class="thumb-info-background" style="background-image: url('@service.ImgUrl');"></span>
+                                <h2 class="thumb-info-title font-weight-bold text-center">
+                                    @service.Title
+                                    <span class="thumb-info-sub-title font-weight-light">
+
+
+
+                                    </span>
+                                </h2>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </li>
+        }
+    </ul>
+
+
+</div>

@@ -1,0 +1,77 @@
+﻿@model ClkCam.Models.Service
+
+@using Dekom.Helper;
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="page-header page-header-modern bg-color-light-scale-1 page-header-md ">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+
+            <div class="col">
+                <div class="row">
+                    <div class="col-md-12 align-self-center p-static order-2 text-center">
+                        <div class="overflow-hidden pb-2">
+                            <h1 class="text-dark font-weight-bold text-9 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">@Model.Title</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-12 align-self-center order-1">
+                        <ul class="breadcrumb d-block text-center appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="300">
+                            <li><a href="/Anasayfa">Anasayfa</a></li>
+                            <li><a href="/Hizmetler">Hizmetler</a></li>
+                            <li><a href="/Hizmetler/@SeoHelper.ToSeoUrl(Model.Title).ToLower()-@Model.ServiceId">@Model.Title</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="container py-4">
+
+    <div class="row">
+        <div class="col appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
+
+            <div class="owl-carousel owl-theme nav-inside nav-inside-edge nav-squared nav-with-transparency nav-dark nav-lg d-block overflow-hidden" data-plugin-options="{'items': 1, 'margin': 10, 'loop': false, 'nav': true, 'dots': false, 'autoHeight': true}" style="height: 510px;">
+                <div>
+                    <div class="img-thumbnail border-0 border-radius-0 p-0 d-block">
+                        <img src="@Model.ImgUrl" class="img-fluid border-radius-0" alt="@Model.Title">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row pt-4 mt-2 mb-5">
+        <div class="col-md-7 mb-4 mb-md-0">
+
+            <h2 class="text-color-dark font-weight-normal text-5 mb-2">Project <strong class="font-weight-extra-bold">Açıklama</strong></h2>
+
+            <p>@Html.Raw(Model.Description)</p>
+
+
+            <hr class="solid my-5">
+
+        </div>
+        <div class="col-md-5">
+            <h2 class="text-color-dark font-weight-normal text-5 mb-2">Project <strong class="font-weight-extra-bold">Detay</strong></h2>
+            <ul class="list list-icons list-primary list-borders text-2">
+                <li><i class="fas fa-caret-right left-10"></i> <strong class="text-color-primary">Başlık:</strong> @Model.Title</li>
+                <li>
+                    <i class="fas fa-caret-right left-10"></i> <strong class="text-color-primary">Etiketler:</strong>
+                    @foreach (var item in Model.Tag.Split(','))
+                    {
+
+                         <span class="badge badge-dark badge-sm rounded-pill px-2 py-1 ms-1">@item</span>
+                }
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b5dfb7630ab4426286b886db104fdf9b" Name="Diagram1">
+        <EntityTypeShape EntityType="ClkCamModel.AboutUs" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClkCamModel.Admin" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClkCamModel.AdminLog" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClkCamModel.Category" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClkCamModel.Contact" Width="1.5" PointX="2.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClkCamModel.Products" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClkCamModel.Service" Width="1.5" PointX="8.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClkCamModel.SiteIdentity" Width="1.5" PointX="8.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClkCamModel.Slider" Width="1.5" PointX="8.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClkCamModel.SubCategory" Width="1.5" PointX="6" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClkCamModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClkCamModel.SystemAdmin" Width="1.5" PointX="6.75" PointY="10.375" IsExpanded="true" />
+        <AssociationConnector Association="ClkCamModel.FK_AdminLog_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="ClkCamModel.FK_Products_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="ClkCamModel.FK_Products_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="ClkCamModel.FK_SubCategory_Category" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

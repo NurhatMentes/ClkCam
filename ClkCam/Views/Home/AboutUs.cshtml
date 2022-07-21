@@ -1,0 +1,45 @@
+﻿@model ClkCam.Models.AboutUs
+
+@{
+    ViewBag.Title = "BİZ KİMİZ?";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="page-header page-header-classic page-header-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 order-2 order-md-1 align-self-center p-static">
+                <h1 data-title-border>Biz Kimiz?</h1>
+            </div>
+            <div class="col-md-4 order-1 order-md-2 align-self-center">
+                <ul class="breadcrumb d-block text-md-end">
+                    <li><a href="/Anasayfa" style="color: white">Anasayfa</a></li>
+                    <li><a href="/Hakkımızda" style="color: white">Hakkımızda</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-default border-0 my-0 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="750">
+    <div class="container py-0">
+
+        <div class="row align-items-center">
+            <div class="col-md-6 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="1000">
+                <div class="owl-carousel owl-theme nav-inside mb-0" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 6000, 'loop': true}">
+                    <div>
+                        <img alt="" class="img-fluid" src="../../Content/SiteLayout/img/generic/generic-corporate-3-2-full.jpg">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="overflow-hidden mb-2">
+                    <h2 class="text-color-dark font-weight-normal text-7 mb-0 pt-0 mt-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="1200">Biz <strong class="font-weight-extra-bold">Kimiz</strong></h2>
+                </div>
+                <p class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1400">@Html.Raw(Model.Description)</p>
+
+            </div>
+        </div>
+
+    </div>
+</section>
