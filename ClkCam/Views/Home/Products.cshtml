@@ -1,0 +1,71 @@
+﻿@using ClkCam.Helper;
+@model IEnumerable<ClkCam.Models.Products>
+
+@{
+    ViewBag.Title = "ÜRÜNLER";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="page-header page-header-modern bg-color-light-scale-1 page-header-md ">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+
+            <div class="col">
+                <div class="row">
+                    <div class="col-md-12 align-self-center p-static order-2 text-center">
+                        <div class="overflow-hidden pb-2">
+                            <h1 class="text-dark font-weight-bold text-9 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">URUNLER</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-12 align-self-center order-1">
+                        <ul class="breadcrumb d-block text-center appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="300">
+                            <li><a href="/Anasayfa">Anasayfa</a></li>
+                            <li><a href="/Urunler">Ürünler</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="container py-2">
+
+    <ul class="nav nav-pills sort-source sort-source-style-3 justify-content-center" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
+        <!--<li class="nav-item active" data-option-value="*"><a class="nav-link text-1 text-uppercase active" href="/Urunler">-->@*Ürünler*@<!--</a></li>-->
+        @*@foreach (var category in ViewBag.Categories)
+        {
+            <li class="nav-item" data-option-value=".@category.CategoryName">
+                <a class="nav-link text-1 text-uppercase" href="Urunler/@SeoHelper.ToSeoUrl(category.CategoryName).ToLower()/@category.CategoryId">@category.CategoryName </a>
+            </li>
+
+        }*@
+    </ul>
+
+    <div class="sort-destination-loader sort-destination-loader-showing mt-4 pt-2">
+        <div class="row portfolio-list sort-destination" data-sort-id="portfolio">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-lg-4 isotope-item brands">
+                    <div class="portfolio-item">
+                        <a href="/Urunler/@SeoHelper.ToSeoUrl(item.Title).ToLower()-@item.ProductId">
+                            <span class="thumb-info thumb-info-lighten border-radius-0">
+                                <span class="thumb-info-wrapper border-radius-0">
+                                    <img src="@item.ImgUrl" class="img-fluid border-radius-0" alt="@item.Title">
+
+                                    <span class="thumb-info-title">
+                                        <span class="thumb-info-inner">@item.Title</span>
+                                        @*<span class="thumb-info-type">Brand</span>*@
+                                    </span>
+                                    <span class="thumb-info-action">
+                                        <span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

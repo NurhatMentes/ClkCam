@@ -98,6 +98,58 @@ namespace ClkCam.Controllers
             return View(service);
         }
 
+        [Route("Urunler")]
+        public ActionResult Products()
+        {
+
+            //ViewBag***
+            ViewBags();
+
+            return View(db.Products.Include("Category").ToList());
+        }
+
+
+        [Route("Urunler/{title}-{id:int}")]
+        public ActionResult ProductDetail(int id)
+        {
+            //var language = this.Language_Code();
+            //ViewBag***
+            ViewBags();
+
+            ViewBag.ProductImage = db.Products.Where(x => x.ProductId == id).Select(x => x.ImgUrl).FirstOrDefault();
+
+            ViewBag.ProductName = db.Products.Where(x => x.ProductId == id).Select(x => x.Title).FirstOrDefault();
+            ViewBag.ProductCategory = db.Products.Where(x => x.ProductId == id).FirstOrDefault();
+            ViewBag.ProductSubCategory = db.Products.Where(x => x.ProductId == id && x.SubCategoryId != null).FirstOrDefault();
+            ViewBag.Keywords = db.Products.Where(x => x.ProductId == id).Select(x => x.Tag).FirstOrDefault();
+
+            var product = db.Products.Include("Category").Where(x => x.ProductId == id).SingleOrDefault();
+
+            return View(product);
+        }
+
+        [Route("Urunler/{categoryName}/{id:int}")]
+        public ActionResult CategoryProducts(int id)
+        {
+            //ViewBag***
+            ViewBags();
+            ViewBag.CategoryName = db.Category.Where(x => x.CategoryId == id).Select(x => x.CategoryName).FirstOrDefault();
+            ViewBag.CategoryImg = db.Category.Where(x => x.CategoryId == id).Select(x => x.ImgUrl).FirstOrDefault();
+
+            var product = db.Products.Where(x => x.CategoryId == id).OrderByDescending(x => x.ProductId).ToList();
+            return View(product);
+        }
+
+        //categories on the home page
+        public ActionResult HomeProductsCategoryPartial()
+        {
+
+            var categories = db.Category.Include("Products").Include("SubCategory").ToList()
+                .OrderBy(x => x.CategoryId);
+            return PartialView(categories);
+        }
+
+
         [Route("Hakkımızda")]
         public ActionResult AboutUs()
         {

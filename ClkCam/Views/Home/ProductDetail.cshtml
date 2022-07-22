@@ -1,9 +1,8 @@
-﻿@model ClkCam.Models.Service
-
-@using ClkCam.Helper;
+﻿@using ClkCam.Helper
+@model ClkCam.Models.Products
 
 @{
-    ViewBag.Title = Model.Title;
+    ViewBag.Title = "ProductDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -21,8 +20,8 @@
                     <div class="col-md-12 align-self-center order-1">
                         <ul class="breadcrumb d-block text-center appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="300">
                             <li><a href="/Anasayfa">Anasayfa</a></li>
-                            <li><a href="/Hizmetler">Hizmetler</a></li>
-                            <li><a href="/Hizmetler/@SeoHelper.ToSeoUrl(Model.Title).ToLower()-@Model.ServiceId">@Model.Title</a></li>
+                            <li><a href="/Hizmetler">Ürünler</a></li>
+                            <li><a href="/Hizmetler/@SeoHelper.ToSeoUrl(@Model.Title).ToLower()-@Model.ProductId">@Model.Title</a></li>
                         </ul>
                     </div>
                 </div>
@@ -40,7 +39,7 @@
             <div class="owl-carousel owl-theme nav-inside nav-inside-edge nav-squared nav-with-transparency nav-dark nav-lg d-block overflow-hidden" data-plugin-options="{'items': 1, 'margin': 10, 'loop': false, 'nav': true, 'dots': false, 'autoHeight': true}" style="height: 510px;">
                 <div>
                     <div class="img-thumbnail border-0 border-radius-0 p-0 d-block">
-                        <img src="@Model.ImgUrl" style="height: 460px" class="img-fluid border-radius-0" alt="@Model.Title">
+                        <img src="@Model.ImgUrl" style="height:460px" class="img-fluid border-radius-0" alt="@Model.Title">
                     </div>
                 </div>
             </div>
@@ -52,7 +51,7 @@
 
             <h2 class="text-color-dark font-weight-normal text-5 mb-2">Project <strong class="font-weight-extra-bold">Açıklama</strong></h2>
 
-            <p>@Html.Raw(Model.Description)</p>
+            <p>@Html.Raw(Model.Content)</p>
 
 
             <hr class="solid my-5">
@@ -67,11 +66,11 @@
                     @foreach (var item in Model.Tag.Split(','))
                     {
 
-                         <span class="badge badge-dark badge-sm rounded-pill px-2 py-1 ms-1">@item</span>
-                }
-                    </li>
-                </ul>
-            </div>
+                        <span class="badge badge-dark badge-sm rounded-pill px-2 py-1 ms-1">@item</span>
+                    }
+                </li>
+            </ul>
         </div>
-
     </div>
+
+</div>

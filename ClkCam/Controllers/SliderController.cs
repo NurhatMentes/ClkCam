@@ -8,7 +8,7 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using ClkCam.Models;
 
-namespace AdminPanelV1.Controllers
+namespace ClkCam.Controllers
 {
     public class SliderController : Controller
     {

@@ -14,13 +14,15 @@
         <EntityTypeShape EntityType="ClkCamModel.Service" Width="1.5" PointX="8.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ClkCamModel.SiteIdentity" Width="1.5" PointX="8.75" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ClkCamModel.Slider" Width="1.5" PointX="8.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClkCamModel.SubCategory" Width="1.5" PointX="6" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClkCamModel.SubCategory" Width="1.5" PointX="6" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ClkCamModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="10.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ClkCamModel.SystemAdmin" Width="1.5" PointX="6.75" PointY="10.375" IsExpanded="true" />
         <AssociationConnector Association="ClkCamModel.FK_AdminLog_Admin" ManuallyRouted="false" />
         <AssociationConnector Association="ClkCamModel.FK_Products_Admin" ManuallyRouted="false" />
         <AssociationConnector Association="ClkCamModel.FK_Products_Category" ManuallyRouted="false" />
         <AssociationConnector Association="ClkCamModel.FK_SubCategory_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="ClkCamModel.FK_Products_Admin1" />
+        <AssociationConnector Association="ClkCamModel.FK_Products_SubCategory" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

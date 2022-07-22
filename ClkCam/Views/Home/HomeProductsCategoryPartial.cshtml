@@ -1,0 +1,11 @@
+﻿@using ClkCam.Helper;
+
+@model IOrderedEnumerable<ClkCam.Models.Category>
+
+
+
+@foreach (var item in Model)
+{
+    <a class="dropdown-item"
+       href="/Urunler/@SeoHelper.ToSeoUrl(item.CategoryName).ToLower()/@item.CategoryId">@item.CategoryName </a>
+}

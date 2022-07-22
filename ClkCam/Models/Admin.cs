@@ -19,6 +19,7 @@ namespace ClkCam.Models
         {
             this.AdminLog = new HashSet<AdminLog>();
             this.Products = new HashSet<Products>();
+            this.Products1 = new HashSet<Products>();
         }
     
         public int AdminId { get; set; }
@@ -34,5 +35,7 @@ namespace ClkCam.Models
         public virtual ICollection<AdminLog> AdminLog { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Products> Products { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Products> Products1 { get; set; }
     }
 }

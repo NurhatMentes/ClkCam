@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Demo Photography | Porto - Multipurpose Website Template</title>
+    <title>@ViewBag.Identity.Title</title>
 
-    <meta name="keywords" content="WebSite Template" />
-    <meta name="description" content="Porto - Multipurpose Website Template">
-    <meta name="author" content="okler.net">
+    <meta name="keywords" content="@ViewBag.Keywords" />
+    <meta name="description" content="@ViewBag.Description">
+    <meta name="author" content="StarWork-IT">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../Content/SiteLayout/img/favicon.ico" type="image/x-icon" />
@@ -70,7 +70,7 @@
                         <div class="col-9">
                             <div class="py-4">
                                 <a href="demo-photography-3.html">
-                                    <img alt="Porto" width="126" height="47" src="../../Content/SiteLayout/img/demos/photography/logo-photography-3.png">
+                                    <img alt="@ViewBag.Identity.Title" width="126" height="47" src="@ViewBag.Identity.LogoUrl">
                                 </a>
                             </div>
                         </div>
@@ -94,8 +94,8 @@
                     <div class="header-column flex-row flex-lg-column justify-content-center h-100">
                         <div class="header-row flex-row justify-content-start justify-content-lg-center py-lg-5">
                             <div class="header-logo">
-                                <a href="demo-photography-3.html">
-                                    <img alt="Porto" width="126" height="47" src="../../Content/SiteLayout/img/demos/photography/logo-photography-3.png">
+                                <a href="/">
+                                    <img alt="@ViewBag.Identity.Title" width="126" height="47" src="@ViewBag.Identity.LogoUrl">
                                 </a>
                             </div>
                         </div>
@@ -115,110 +115,17 @@
                                                 </a>
                                                 <ul class="dropdown-menu">
                                                     <li class="back-button d-none d-lg-block">
-                                                        <a class="dropdown-item">
-                                                            Hizmetlerimiz
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="../../Content/SiteLayout/demo-photography-3-about-me.html">
-                                                            Hakkımızda
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="../../Content/SiteLayout/demo-photography-3-about-us.html">
-                                                            İletişim
-                                                        </a>
+                                                        <a href="/Urunler" class="nav-link dropdown-toggle"> ÜRÜNLER </a>
+                                                       
+                                                        @{
+                                                            Html.RenderAction("HomeProductsCategoryPartial", "Home");
+                                                        }
                                                     </li>
                                                 </ul>
-                                            </li>
-                                            <li class="dropdown">
+                                            <li>
                                                 <a href="/Hizmetler" class="nav-link dropdown-toggle">
                                                     HİZMETLERİMİZ
                                                 </a>
-                                                <ul class="dropdown-menu">
-                                                    <li class="back-button d-none d-lg-block">
-                                                        <a class="dropdown-item">
-                                                            Back
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="../../Content/SiteLayout/demo-photography-3-portfolio-stripes.html">
-                                                            Stripes
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="../../Content/SiteLayout/demo-photography-3-portfolio-vertical.html">
-                                                            Vertical
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="../../Content/SiteLayout/demo-photography-3-portfolio-parallax.html">
-                                                            Parallax
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="../../Content/SiteLayout/demo-photography-3-portfolio-horizontal-scroll.html">
-                                                            Horizontal Scroll
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="../../Content/SiteLayout/demo-photography-3-portfolio-full-width-grid.html">
-                                                            Full Width Grid
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="../../Content/SiteLayout/demo-photography-3-portfolio-full-width-no-margins.html">
-                                                            Full Width No Margins
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="demo-photography-3-portfolio-boxed-grid.html">
-                                                            Boxed Grid
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="../../Content/SiteLayout/demo-photography-3-portfolio-infinite-scroll.html">
-                                                            Infinite Scroll
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="demo-photography-3-portfolio-ajax-on-page.html">
-                                                            Ajax On Page
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="demo-photography-3-portfolio-full-screen.html">
-                                                            Full Screen
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="demo-photography-3-portfolio-ken-burns.html">
-                                                            Ken Burns
-                                                        </a>
-                                                    </li>
-                                                    <li class="dropdown-submenu">
-                                                        <a class="dropdown-item" href="#">
-                                                            Portfolio Detail
-                                                        </a>
-                                                        <ul class="dropdown-menu">
-                                                            <li class="back-button d-none d-lg-block">
-                                                                <a class="dropdown-item">
-                                                                    Back
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="dropdown-item" href="../../Content/SiteLayout/demo-photography-3-portfolio-detail-extended.html">
-                                                                    Extended
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="dropdown-item" href="../../Content/SiteLayout/demo-photography-3-portfolio-detail-slider-with-thumbs.html">
-                                                                    Slider with Thumbs
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
                                             </li>
                                             <li>
                                                 <a class="nav-link" href="/Hakkımızda">
@@ -246,7 +153,7 @@
         </header>
 
         <div role="main" class="main" id="main">
-            @RenderBody();
+            @RenderBody()
         </div>
 
     </div>

@@ -18,34 +18,34 @@
 
                 <form class="contact-form" action="php/contact-form.php" method="POST">
                     <div class="contact-form-success alert alert-success d-none mt-4">
-                        <strong>Success!</strong> Your message has been sent to us.
+                        <strong>Success!</strong> Mesajınız Gönderildi.
                     </div>
 
                     <div class="contact-form-error alert alert-danger d-none mt-4">
-                        <strong>Error!</strong> There was an error sending your message.
+                        <strong>Hata!</strong> Mesaj gönderilirken hata oluştu.
                         <span class="mail-error-message text-1 d-block"></span>
                     </div>
 
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label class="form-label mb-1 text-2">İsim</label>
-                            <input type="text" value="" data-msg-required="Please enter your name." maxlength="100" class="form-control text-3 h-auto py-2" name="name" required>
+                            <input type="text" value="" data-msg-required="Lütfen adınızı yazınız." maxlength="100" class="form-control text-3 h-auto py-2" name="name" required>
                         </div>
                         <div class="form-group col-lg-6">
                             <label class="form-label mb-1 text-2">E-Posta</label>
-                            <input type="email" value="" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control text-3 h-auto py-2" name="email" required>
+                            <input type="email" value="" data-msg-required="Lütfen e-posta adresinizi yazınız. " data-msg-email="Please enter a valid email address." maxlength="100" class="form-control text-3 h-auto py-2" name="email" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col">
                             <label class="form-label mb-1 text-2">Konu</label>
-                            <input type="text" value="" data-msg-required="Please enter the subject." maxlength="100" class="form-control text-3 h-auto py-2" name="subject" required>
+                            <input type="text" value="" data-msg-required="Lütfen bilgi almak istediğiniz konuyu yazınız." maxlength="100" class="form-control text-3 h-auto py-2" name="subject" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col">
                             <label class="form-label mb-1 text-2">Mesaj</label>
-                            <textarea maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control text-3 h-auto py-2" name="message" required></textarea>
+                            <textarea maxlength="5000" data-msg-required="Lütfen mesajınızı yazınız." rows="8" class="form-control text-3 h-auto py-2" name="message" required></textarea>
                         </div>
                     </div>
                     <div class="row">
@@ -61,7 +61,7 @@
                 <div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="800">
                     <ul class="list list-icons list-icons-style-2 mt-2">
                         <li><i class="fas fa-map-marker-alt top-6"></i> <strong class="text-dark">Addres:</strong> @Model.Adress</li>
-                        <li><i class="fas fa-phone top-6"></i> <strong class="text-dark">Telefon:</strong> (123) 456-789</li>
+                        <li><i class="fas fa-phone top-6"></i> <strong class="text-dark">Telefon:</strong> @Model.Tel</li>
                         <li><i class="fas fa-envelope top-6"></i> <strong class="text-dark">E-Posta:</strong> <a href="mailto:@Model.Email">@Model.Email</a></li>
                     </ul>
                 </div>

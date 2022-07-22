@@ -24,8 +24,12 @@ namespace ClkCam.Models
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public string Tag { get; set; }
         public string ImgUrl { get; set; }
+        public Nullable<int> AdminId { get; set; }
+        public Nullable<int> SubCategoryId { get; set; }
     
         public virtual Admin Admin { get; set; }
         public virtual Category Category { get; set; }
+        public virtual Admin Admin1 { get; set; }
+        public virtual SubCategory SubCategory { get; set; }
     }
 }

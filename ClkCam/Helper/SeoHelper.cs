@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace Dekom.Helper
+namespace ClkCam.Helper
 {
     public class SeoHelper
     {
