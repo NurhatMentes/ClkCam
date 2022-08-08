@@ -97,7 +97,7 @@
                         </li>
                         <li>
                             @{
-                                if (userCookie["Auth"].ToString() == "Admin")
+                                if (userCookie["Auth"].ToString() == "1")
                                 {
                                     <a class="dropdown-item d-flex align-items-center" href="/Admin/Admins/">
                                         <i class="bi bi-file-person-fill"></i>
@@ -147,7 +147,7 @@
                 </a>
             </li><!-- End Dashboard Nav -->
             @{
-                if (userCookie["Auth"] == "Admin")
+                if (userCookie["Auth"] == "1")
                 {
                     <li class="nav-item">
                         <a class="nav-link " href="/SiteIdentity/">
@@ -158,7 +158,7 @@
                 }
 
 
-                if (userCookie["Auth"] == "Admin" || userCookie["Auth"] == "Editör")
+                if (userCookie["Auth"] == "1" || userCookie["Auth"] == "2")
                 {
                     <li class="nav-item">
                         <a class="nav-link " href="/Contact/">
@@ -167,12 +167,7 @@
                         </a>
                     </li><!-- End Contact Nav -->
 
-                    <li class="nav-item">
-                        <a class="nav-link " href="/AboutUs/">
-                            <i class="bi bi-grid"></i>
-                            <span>Hakkımızda</span>
-                        </a>
-                    </li><!-- End AboutUs Nav -->
+                  
                   
                     <li class="nav-item" id="Service">
                         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#" id="Service">
@@ -199,11 +194,17 @@
 
                 }
 
-                if (userCookie["Auth"] == "Admin" || userCookie["Auth"] == "Editör" || userCookie["Auth"] == "Yazar")
+                if (userCookie["Auth"] == "1" || userCookie["Auth"] == "2" || userCookie["Auth"] == "3")
                 {
                     <li class="nav-item">
+                        <a class="nav-link " href="/AboutUs/">
+                            <i class="bi bi-grid"></i>
+                            <span>Hakkımızda</span>
+                        </a>
+                    </li><!-- End AboutUs Nav -->
+                    <li class="nav-item">
                         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                            <i class="bi bi-journal-text"></i><span>Ürün Kayıtları</span><i class="bi bi-chevron-down ms-auto"></i>
+                            <i class="bi bi-journal-text"></i><span>Kategoriler</span><i class="bi bi-chevron-down ms-auto"></i>
                         </a>
                         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                             <li>
@@ -214,13 +215,15 @@
                                     <i class="bi bi-circle"></i><span>Alt Kategoriler</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="/Products/">
-                                    <i class="bi bi-circle"></i><span>Ürünler</span>
-                                </a>
-                            </li>
+                            
                         </ul>
-                    </li><!-- End Blog - Category -->
+                    </li><!-- Category -->
+                    <li class="nav-item">
+                        <a class="nav-link " href="/Products/">
+                            <i class="bi bi-grid"></i>
+                            <span>Ürünler</span>
+                        </a>
+                    </li><!-- End Products Nav -->
                 }
             }
 

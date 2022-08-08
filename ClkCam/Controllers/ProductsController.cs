@@ -80,6 +80,7 @@ namespace ClkCam.Controllers
         public ActionResult Create(Products products, HttpPostedFileBase imgUrl)
         {
             var userCookie = Request.Cookies["userCookie"];
+
             if (ModelState.IsValid)
             {
                 if (imgUrl != null)
@@ -93,10 +94,18 @@ namespace ClkCam.Controllers
 
                     products.ImgUrl = "/Uploads/Product/" + imgName;
 
-                    
-                    products.Date = DateTime.Now;
-                    products.AdminId = Convert.ToInt16(userCookie["AdminId"]); ;
 
+                    products.Date = DateTime.Now;
+                    try
+                    {
+                        products.AdminId = Convert.ToInt16(userCookie["AdminId"]); ;
+                    }
+                    catch (Exception ex)
+                    {
+                        return RedirectToAction("Login","Admin");
+                    }
+
+                    products.Price = 0;
 
                     db.Products.Add(products);
                     db.SaveChanges();

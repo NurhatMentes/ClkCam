@@ -20,8 +20,9 @@
                     <div class="col-md-12 align-self-center order-1">
                         <ul class="breadcrumb d-block text-center appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="300">
                             <li><a href="/Anasayfa">Anasayfa</a></li>
-                            <li><a href="/Hizmetler">Ürünler</a></li>
-                            <li><a href="/Hizmetler/@SeoHelper.ToSeoUrl(@Model.Title).ToLower()-@Model.ProductId">@Model.Title</a></li>
+                            <li><a href="/Urunler">Ürünler</a></li>
+                            <li><a href="/Urunler/@SeoHelper.ToSeoUrl(@ViewBag.ProductCategory.Category.CategoryName).ToLower()/@ViewBag.ProductCategory.Category.CategoryId">@ViewBag.ProductCategory.Category.CategoryName</a></li>
+                            <li><a href="/Urunler/@SeoHelper.ToSeoUrl(@Model.Title).ToLower()-@Model.ProductId">@Model.Title</a></li>
                         </ul>
                     </div>
                 </div>
@@ -49,7 +50,7 @@
     <div class="row pt-4 mt-2 mb-5">
         <div class="col-md-7 mb-4 mb-md-0">
 
-            <h2 class="text-color-dark font-weight-normal text-5 mb-2">Project <strong class="font-weight-extra-bold">Açıklama</strong></h2>
+            <h2 class="text-color-dark font-weight-normal text-5 mb-2"> <strong class="font-weight-extra-bold">@Model.Title</strong></h2>
 
             <p>@Html.Raw(Model.Content)</p>
 
@@ -58,7 +59,7 @@
 
         </div>
         <div class="col-md-5">
-            <h2 class="text-color-dark font-weight-normal text-5 mb-2">Project <strong class="font-weight-extra-bold">Detay</strong></h2>
+            <h2 class="text-color-dark font-weight-normal text-5 mb-2"> <strong class="font-weight-extra-bold">Detay</strong></h2>
             <ul class="list list-icons list-primary list-borders text-2">
                 <li><i class="fas fa-caret-right left-10"></i> <strong class="text-color-primary">Başlık:</strong> @Model.Title</li>
                 <li>
@@ -69,6 +70,11 @@
                         <span class="badge badge-dark badge-sm rounded-pill px-2 py-1 ms-1">@item</span>
                     }
                 </li>
+
+                <a href="https://wa.me/@ViewBag.Contact.Whatsapp?text=Merhaba%20,@Model.Title%20ürünü%20ile%20ilgili%20bilgi%20almak%20istiyorum" target="_blank" title="Whatsapp" style="margin-left: 5%">
+                     <img src="~/Content/SiteLayout/img/icons8-whatsapp.gif" style="height: 100px"/>
+                </a>
+
             </ul>
         </div>
     </div>

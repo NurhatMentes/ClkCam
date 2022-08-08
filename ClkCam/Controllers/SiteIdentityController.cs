@@ -50,9 +50,9 @@ namespace ClkCam.Controllers
                     WebImage image = new WebImage(LogoUrl.InputStream);
                     FileInfo fileInfo = new FileInfo(LogoUrl.FileName);
 
-                    logoName = LogoUrl.FileName + fileInfo.Extension;
+                    logoName = LogoUrl.FileName ;
 
-                    image.Resize(300, 200);
+                    image.Resize(126, 50);
                     image.Save("~/Uploads/SiteIdentity/" + logoName);
 
                     identity.LogoUrl = "/Uploads/SiteIdentity/" + logoName;

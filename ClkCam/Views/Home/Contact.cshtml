@@ -15,15 +15,13 @@
             <div class="col-lg-6">
 
                 <h2 class="font-weight-bold text-8 mt-2 mb-0">İletişime Geç</h2>
-
-                <form class="contact-form" action="php/contact-form.php" method="POST">
-                    <div class="contact-form-success alert alert-success d-none mt-4">
+                <form class="contact-form" method="post" action="/Home/Contact/">
+                    @Html.AntiForgeryToken()
+                    <div class="contact-form-error alert alert-success d-none mt-4">
                         <strong>Success!</strong> Mesajınız Gönderildi.
                     </div>
-
-                    <div class="contact-form-error alert alert-danger d-none mt-4">
-                        <strong>Hata!</strong> Mesaj gönderilirken hata oluştu.
-                        <span class="mail-error-message text-1 d-block"></span>
+                    <div class="alert alert-success d-none mt-4">
+                        <strong>Success!</strong> @ViewBag.Danger
                     </div>
 
                     <div class="row">
@@ -50,7 +48,7 @@
                     </div>
                     <div class="row">
                         <div class="form-group col">
-                            <input type="submit" value="Gönder" class="btn btn-primary btn-modern" data-loading-text="Gönderiliyor...">
+                            <input type="submit" value="Gönder" class="btn btn-primary btn-modern" data-loading-text="Gönderildi...">
                         </div>
                     </div>
                 </form>
@@ -84,3 +82,5 @@
     </div>
 
 </div>
+<!-- Current Page Vendor and Views -->
+<script src="../../Content/SiteLayout/js/views/view.contact.js"></script>

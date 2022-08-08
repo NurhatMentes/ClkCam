@@ -5,6 +5,7 @@ using System.Data.Common;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
@@ -118,9 +119,8 @@ namespace ClkCam.Controllers
         [HttpPost]
         public ActionResult ForgotMyPassword(string email = null)
         {
+
             var user = db.Admin.Where(x => x.Email == email).SingleOrDefault();
-            var ePosta = db.SystemAdmin.Select(x => x.Email).SingleOrDefault();
-            var password = db.SystemAdmin.Select(x => x.Password).SingleOrDefault();
 
             if (user != null)
             {
@@ -135,25 +135,42 @@ namespace ClkCam.Controllers
                 user.RePassword = Crypto.Hash(newPassword, "MD5");
                 db.SaveChanges();
 
+                var message = "Yeni şifrenizi değiştirmeyi unutmayınız!" + '\n' + "Yeni Şifre: " + newPassword;
+
                 try
                 {
-                    WebMail.SmtpServer = "smtp.gmail.com";
-                    WebMail.EnableSsl = true;
-                    WebMail.UserName = ePosta;
-                    WebMail.Password = password;
-                    WebMail.SmtpPort = 587;
-                    WebMail.Send(email, "Yönetim paneline yeni giriş şifreniz", "Şifrenizi değiştirmeyi unutmayınız!" + "<br/>" + "<strong/>" + "Şifreniz: " + newPassword);
-                    ViewBag.Danger = "Yeni Şifreniz gönderilmiştir.";
-                }
-                catch (Exception ex)
-                {
 
-                    ViewBag.Danger = ex.Message;
+
+                    SmtpClient client = new SmtpClient("mail.clkcam.com", 587);
+                    MailAddress from = new MailAddress("info@clkcam.com");
+                    MailAddress to = new MailAddress(user.Email);
+                    MailMessage msg = new MailMessage(from, to);
+                    msg.IsBodyHtml = true;
+                    msg.Subject = "CLK CAM Yönetim paneline yeni giriş şifresi";
+                    msg.Body += "info@clkcam.com" + to + "<br /><b>Ad:</b> " + user.FullName + "<br />" + "<b>Konu: </b>" + "DekOM Yönetim paneline yeni giriş şifresi" + "<br /> \n" + "<b> Yeni Şifre:</b> " + message;
+                    msg.CC.Add("info@clkcam.com");
+
+                    NetworkCredential Credentials = new NetworkCredential("info@clkcam.com", "#45teh60E");
+                    client.Credentials = Credentials;
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    client.Port = 587;
+                    client.Host = "peterpan.wlsrv.com";
+                    client.EnableSsl = false;
+                    client.Send(msg);
+
+                    ViewBag.Danger = "Yeni Şifreniz gönderilmiştir.";
+                    Response.Write("<script>alert('Yeni Şifreniz gönderilmiştir.')</script>");
+                    return Redirect("/Admin/forgotmypassword");
+                }
+                catch (Exception e)
+                {
+                    ViewBag.Danger = "Hata oluştu. Tekrar deneyiniz.";
                 }
             }
             else
             {
                 ViewBag.Danger = "Kayıtlı kullanıcı bulunamadı!";
+                Response.Write("<script>alert('Kayıtlı kullanıcı bulunamadı!')</script>");
             }
 
             return View();

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
@@ -44,27 +46,48 @@ namespace ClkCam.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Contact(string email, string message, string name, string subject)
         {
-            //var language = this.Language_Code();
+            //ViewBag***
+            ViewBags();
 
-            var systemAdmin = db.SystemAdmin.FirstOrDefault();
+           
 
             if (name != null && email != null)
             {
-                WebMail.SmtpServer = "smtp.gmail.com";
-                WebMail.EnableSsl = true;
-                WebMail.UserName = systemAdmin.Email;
-                WebMail.Password = systemAdmin.Password;
-                WebMail.SmtpUseDefaultCredentials = true;
-                WebMail.SmtpPort = 587;
-                WebMail.Send(systemAdmin.Email, subject, email + '\n' + message);
-                ViewBag.Danger = "Mesajınız başarı ile gönderilmiştir.";
-                return Redirect("/Home");
+
+                try
+                {
+                    SmtpClient client = new SmtpClient("mail.clkcam.com", 587);
+                    MailAddress from = new MailAddress("info@clkcam.com");
+                    MailAddress to = new MailAddress("info@clkcam.com");
+                    MailMessage msg = new MailMessage(from, to);
+                    msg.IsBodyHtml = true;
+                    msg.Subject = "[Contact] İletişim";
+                    msg.Body += "info@clkcam.com" + to + "<br /><b>Ad:</b> " + name + "<br />" + "<b>Konu: </b>" + subject + "<br />" + "<b> Mesaj:</b> " + message;
+                    msg.CC.Add("info@clkcam.com");
+
+                    NetworkCredential Credentials = new NetworkCredential("info@clkcam.com", "#45teh60E");
+                    client.Credentials = Credentials;
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    client.Port = 587;
+                    client.Host = "peterpan.wlsrv.com";
+                    client.EnableSsl = false;
+                    client.Send(msg);
+
+                    ViewBag.Danger = "Mesajınız başarı ile gönderilmiştir.";
+                    Response.Write("<script>alert('Mesajınız başarı ile gönderilmiştir.')</script>");
+                    return Redirect("/İletisim");
+                }
+                catch (Exception e)
+                {
+                    ViewBag.Danger = "Hata oluştu. Tekrar deneyiniz.";
+                    Response.Write("<script>alert('Hata oluştu. Tekrar deneyiniz.')</script>");
+                }
             }
             else
             {
-                ViewBag.Danger = "Hata oluştu. Tekrar deneyiniz.";
+                ViewBag.Danger = "Zorunlu tüm alanları doldurunuz";
             }
-            return View();
+            return View(db.Contact.FirstOrDefault());
         }
 
         public ActionResult SliderPartial()
